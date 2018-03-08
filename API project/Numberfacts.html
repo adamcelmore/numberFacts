@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <style>
+            .box{
+                margin: auto;
+                border: solid 2px red;
+                width: 500px;
+                height: 300px;
+                text-align: center;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="box">
+
+            <input class="btn btn-danger" id="number" type="text" placeholder="Input a number...">
+            <button id="send" class="btn btn-primary">press</button>
+            <p id="phrase">
+                
+            </p>
+        </div>
+        <script>
+
+            $(document).ready(function() {
+                var send = $('#send');
+
+                $('#number').on('click',function() {
+                    console.log($('#number').val());
+                });
+                $('#send').on('click',function() {
+                    var url = "http://numbersapi.com/";
+
+                    var data = $('#number').val();
+                    url += data;
+                    $.get(url, function(response) {
+                        $('#phrase').html(response);
+                        console.log(response);
+
+                    });
+                });
+
+
+            });
+        </script>
+    </body>
+</html>
